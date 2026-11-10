@@ -1,0 +1,1773 @@
+/*
+ * Author       : monica.n.2024.cse_rajalak240
+ * Generated on : 10-Nov-2026 11:40:42
+ * Version      : 1.0
+ */
+ application "Event Registration"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form Colleges
+		{
+			success message = "College Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			college_name
+			(
+    			type = text
+				displayname = "College Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			college_code
+			(
+    			type = text
+				displayname = "College Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			city
+			(
+    			type = text
+				displayname = "City"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Event_Registration
+		{
+			displayname = "Event Registration"
+			success message = "Event Registration Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have participant_name
+			(
+    			type = name
+				displayname = "Participant Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have participant_type
+			(
+				type = picklist
+				displayname = "Participant Type"
+				maxchar = 100
+				values = {"Student","Faculty","Professional"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have team_size
+			(
+				type = number
+				displayname = "Team Size"
+				maxchar = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have email_address
+			(
+    			type = email
+				displayname = "Email Address"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have contact_number
+			(
+    			type = phonenumber
+				displayname = "Contact Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have college_organization_name
+			(
+    			type = text
+				displayname = "College Organization Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			institution_address
+			(
+    			type = address
+				displayname = "Institution Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have event_track
+			(
+				type = picklist
+				displayname = "Event Track"
+				maxchar = 100
+				values = {"Technical","Non-technical","Workshop"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			areas_of_interest
+			(
+				type = list	
+				displayname = "Areas Of Interest"
+				values = {"Agentic Automation","Generative AI","Cloud Computing","Machine Learning","Blockchain"}
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			expectations_from_event
+			(
+    			type = textarea
+				displayname = "Expectations From Event"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			College_Name_Lookup
+			(
+				type = picklist	
+				displayname = "College Name Lookup"
+				values  = Colleges.ID
+    			displayformat = [college_name]
+				advanced field search = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Section_E_Identity_Verification
+			(
+				type = section
+				displayname = "Section E - Identity & Verification"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			Profile_Photo
+			(
+    			type = image
+				displayname = "Profile Photo"
+				source  = file
+				aspect ratio = original
+				camera = primary
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Academic_CGPA
+			(
+				type = decimal
+				displayname = "Academic CGPA"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			ID_Proof_Upload
+			(
+    			type = upload file
+				displayname = "ID Proof Upload"
+				browse = local_drive
+				allowed file formats = {"jpg","pdf","png","jpeg","doc","docx"}
+	 			row = 2
+	 			column = 2   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Team_Intro_Video
+			(
+    			type = video
+				displayname = "Team Intro Video"
+    			duration=30
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Special_Requirement_Voice_Note
+			(
+     			type = audio
+				displayname = "Special Requirement Voice Note"
+    			duration=60
+	 			row = 3
+	 			column = 2   
+				width = medium
+			)
+			Portfolio_LinkedIn_URL
+			(
+    			type = url
+				displayname = "Portfolio LinkedIn URL"
+				enable  linkname
+	 			row = 3
+	 			column = 2   
+				width = medium
+			)
+			Section_F_Team_Media_Details
+			(
+				type = section
+				displayname = "Section F - Team & Media Details"
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			must have Team_Members_Details
+			(
+				type = grid
+				displayname = "Team Members Details"
+				defaultrow = 1
+				maxrow = 6
+				must have Teammate_Name
+				(
+    				type = text
+					displayname = "Teammate Name"
+					width = medium
+				)
+				must have Teammate_Email
+				(
+    				type = email
+					displayname = "Teammate Email"
+					maxchar = 80
+					width = medium
+				)
+				must have Teammate_Role
+				(
+    				type = text
+					displayname = "Teammate Role"
+					width = medium
+				)
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Section_G_Fee_Accommodation
+			(
+				type = section
+				displayname = "Section G - Fee & Accommodation"
+				visibility = true
+	 			row = 6
+	 			column = 0   
+				width = medium
+			)
+			must have Requires_Accommodation
+			(
+    			type = checkbox
+				displayname = "Requires Accommodation"
+				initial value = false
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Early_Bird_Discount_Percent
+			(
+    			type = percentage
+				displayname = "Early Bird Discount Percent"
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Registration_Fee_Paid
+			(
+				displayname = "Registration Fee Paid"
+				type = INR
+	 			row = 6
+	 			column = 2   
+				width = medium
+			)
+			Total_Amount_Payable
+			(
+    			type = textarea
+				displayname = "Total Amount Payable"
+	 			row = 6
+	 			column = 2   
+				width = medium
+    			Formula_Properties
+    			(
+    						value =  Ifnull(input.Registration_Fee_Paid,0) - Ifnull(input.Early_Bird_Discount_Percent,0) / 100 * Ifnull(input.Registration_Fee_Paid,0)
+    						visibility = false
+    						format = plaintext
+    			)
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Event_Registrations
+		{
+			displayName = "All Event Registrations"
+			show all rows from Event_Registration    
+			(
+				participant_name  as "Participant Name"
+				participant_type as "Participant Type"
+				team_size as "Team Size"
+				email_address as "Email Address"
+				contact_number as "Contact Number"
+				college_organization_name as "College Organization Name"
+				institution_address  as "Institution Address"
+				event_track as "Event Track"
+				areas_of_interest as "Areas Of Interest"
+				expectations_from_event as "Expectations From Event"
+			)
+		}
+		default list All_Colleges
+		{
+			displayName = "All Colleges"
+			show all rows from Colleges    
+			(
+				college_name as "College Name"
+				college_code as "College Code"
+				city as "City"
+			)
+		}
+		list All_Registrations_List
+		{
+			displayName = "All_Registrations_List"
+			show all rows from Event_Registration    
+			(
+				participant_name  as "Participant Name"
+				email_address as "Email Address"
+				event_track as "Event Track"
+				participant_type as "Participant Type"
+				Added_Time as "Added Time"
+				(
+					displayformat = fulldate
+				)
+			)
+			sort by
+			(
+				Added_Time descending
+			)
+		}
+		kanban Registration_Status_Kanban
+		{
+			displayName = "Registration_Status_Kanban"
+			show all rows from Event_Registration    
+			(
+				participant_name  as "Participant Name"
+				email_address as "Email Address"
+				event_track as "Event Track"
+				participant_type as "Participant Type"
+				Record_Status as "Record Status"
+			)
+			options
+			(
+	 			display field = Record_Status
+	 		)
+		}
+		list Track_By_ParticipantType_Pivot
+		{
+			displayName = "Track_By_ParticipantType_Pivot"
+			show all rows from Event_Registration    
+			(
+				event_track as "Event Track"
+				participant_type as "Participant Type"
+			)
+			group by
+			(
+				event_track ascending
+				participant_type ascending
+			)
+		}
+		calendar Session_Schedule_Calendar
+		{
+			displayName = "Session_Schedule_Calendar"
+			show all rows from Event_Registration    
+			(
+				participant_name  as "Participant Name"
+				email_address as "Email Address"
+				event_track as "Event Track"
+				participant_type as "Participant Type"
+				Added_Time as "Added Time"
+				(
+					displayformat = fulldate
+				)
+			)
+			options
+			(
+				display field = participant_name
+				start date = Added_Time
+			)
+		}
+		list Track_Popularity_Chart
+		{
+			displayName = "Track_Popularity_Chart"
+			show all rows from Event_Registration    
+			(
+				event_track as "Event Track"
+			)
+			group by
+			(
+				event_track ascending
+			)
+		}
+		summary Institution_Wise_Summary
+		{
+			displayName = "Institution_Wise_Summary"
+			show all rows from Event_Registration    
+			(
+				college_organization_name as "College Organization Name"
+				team_size as "Team Size"
+				(
+					display = total	
+				)
+			)
+			group by
+			(
+				college_organization_name ascending
+			)
+			options
+			(
+				display rows = 10
+				display records per row = 3
+			)
+		}
+		map Participant_Institution_Map
+		{
+			displayName = "Participant_Institution_Map"
+			show all rows from Event_Registration    
+			(
+				participant_name  as "Participant Name"
+				email_address as "Email Address"
+				event_track as "Event Track"
+				participant_type as "Participant Type"
+				institution_address  as "Institution Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+			)
+			options
+			(
+	 			display field = institution_address
+		 		radius = 50 Kms
+	 		)
+		}
+		timeline Registration_Activity_Timeline
+		{
+			displayName = "Registration_Activity_Timeline"
+			show all rows from Event_Registration    
+			(
+				participant_name  as "Participant Name"
+				email_address as "Email Address"
+				event_track as "Event Track"
+				participant_type as "Participant Type"
+				Added_Time as "Added Time"
+				(
+					displayformat = fulldate
+				)
+			)
+			options
+			(
+				display field = participant_name
+				start date = Added_Time
+			)
+		}
+		spreadsheet Registrations_Spreadsheet
+		{
+			displayName = "Registrations_Spreadsheet"
+			show all rows from Event_Registration    
+			(
+				participant_name  as "Participant Name"
+				email_address as "Email Address"
+				event_track as "Event Track"
+			)
+			group by
+			(
+				event_track ascending
+			)
+		}
+	}
+	pages
+	{
+		page Event_Command_Center_Page
+		{
+			displayname = "Event Command Center Page"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Command_Center_Main_Panel.stat.tinted.comfortable'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = 'theme:10'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '8px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '24px'\n\tpaddingLeft = '24px'\n\tpaddingRight = '24px'\n\tpaddingBottom = '24px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = 'theme'\n\tsize = '13px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total Registrations'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='8px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = 'theme:75'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.Event_Registration.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='8px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<text \n\n\tcolor = 'theme'\n\tsize = '12px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Target: 1000'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<gauge \n\telementName='Gauge'\n\n\t\n\ttitle = 'Registration Progress'\n\t\n\tcolor = '#000000'\n\tsize = '20px'\n\tfontFamily = 'default' \n\tbgColor = '#ffffff'\n\ttheme = '#FF7B19'\n\tdisplayType = 'actual'\n\ttype = '2'\n\tfilledColor = 'theme'\n\tnonFilledColor = '#F5F5F5'\n\tneedleColor = '#000000'\n\ttargetColor = '#D8D8D8'\n\tvalue = 'thisapp.Event_Registration.ID.count'\n>\n<target size=\"15px\" color=\"#7F7F7F\" fontFamily=\"default\" value=\"1000\"\n/><maximumvalue size=\"15px\" color=\"#7F7F7F\" value=\"1000\" \n/>\n</gauge>\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart'\n\n\t\n\ttitle = 'Registrations by Event Track'\n\t\n\ttype = 'Column'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme'\n\tlegendPos = 'center.top'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Event_Registration'\n\txfield = 'event_track'\n\tyfields = 'count:ID'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<search \n\telementName='Search'\n\tpaddingTop = '5px'\n\tpaddingLeft = '15px'\n\tpaddingRight = '15px'\n\tpaddingBottom = '5px'\n\tbgtype = 'none'\n\tbgColor = 'transparent'\n\n\tshape = 'flat'\n\tresultComponent = 'report'\n\tlinkName = 'All_Event_Registrations'\n\ttarget = 'new-window'\n\tcriteriaString = 'participant_name.contains(input.searchString) || email_address.contains(input.searchString) || ID.contains(input.searchString)'\n\tfontFamily = 'default'\n\tappLinkName = 'thisapp'\n\tstyle = '2'\n\tplaceholder = 'Search by name, email, or Registration ID'\n\n>\n<searchbar color=\"#000000\" bgColor=\"#ffffff\" fontSize=\"15px\"\n/><searchbutton color=\"#ffffff\" bgColor=\"theme\" \nfontSize=\"15px\"  /></search>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<board\n    \n\tbgColor = '#FFFFFF'\n        bgColorType = 'solid'\n\tpadding = '0px'\nelementName='Board'\n    layoutType = 'grid'\n        items = '1'\n    appLinkName = 'thisapp'\n    formLinkName = 'Event_Registration'\n    rankBy = 'ID'\n    rankOrder = 'highestToLowest'\n    rankAggregate = 'count'\n    limit = '10'\n    groupBy = 'Record_Status'\n>\n<boardHeader>\n    <pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '14px'\n\tpaddingLeft = '15px'\n\tpaddingRight = '15px'\n\tpaddingBottom = '14px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#000000'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Registration Status'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</boardHeader>\n<boardLayout\n                paddingRight = '15px'\n                paddingBottom = '14px'\n                paddingLeft = '15px'\n                paddingTop = '2px'\n                itemGap = '10px'\n>\n    <pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingLeft = '20px'\n\tpaddingRight = '20px'\n\n    borderColor = '#F2F2F2'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '12px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '10px'\n\tpaddingBottom = '10px'\n\n\t\twidth = '70%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#000000'\n\tsize = '19px'\n\tbold = 'true' \n\ttype = 'boardData'\n\n\n    lineHeight = '26'\n    numOfLines = '1'\n\n\n\n\n\n\t  value = 'rank'\n>\n</text>\n\n</pc><pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '20px'\n\n\tcolor = '#000000'\n\tbgColor = '#F7F7FB'\n\twidth = '36px'\n\theight = '36px'\n\ttype = 'icon'\n\tvalue = 'education-books-46'\n\tsize = '20px'\n\tcornerRadius = '18px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tmarginLeft = '15px'\n\tcolor = '#000000'\n\tsize = '16px'\n\ttype = 'boardData'\n\n\n    lineHeight = '22'\n    numOfLines = '1'\n\n\n\n\n\n\t  value = 'groupedField'\n>\n</text>\n\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingBottom = '10px'\n\n\t\twidth = '30%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = 'theme'\n\tsize = '17px'\n\tbold = 'true' \n\ttype = 'boardData'\n\n\n    lineHeight = '23'\n    numOfLines = '1'\n\n\n\n\n\n\t  value = 'rankAggregate'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</boardLayout>\n</board>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<form \n\telementName='Form'\n\n\tappLinkName = 'thisapp'\n\tlinkName = 'Event_Registration'\n\theightType = 'auto'\n\turlType = 'none'\n\tzc_Header = 'false'\n/> \n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'All_Event_Registrations'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<dsp id='Event_Guidelines_Snippet_dsp' elementName='Event_Guidelines_Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage Event_Guidelines_Snippet_dsp()\ncontent\n&lt;%{\n\t%&gt;\n&lt;style&gt;\n  .guidelines-container {\n    background-color: #f9f9f9;\n    border: 1px solid #e0e0e0;\n    border-radius: 8px;\n    padding: 20px;\n    max-width: 600px;\n    font-family: Arial, sans-serif;\n    box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n  }\n  .guidelines-title {\n    color: #2c3e50;\n    font-size: 20px;\n    font-weight: bold;\n    margin-bottom: 15px;\n    border-bottom: 2px solid #3498db;\n    padding-bottom: 10px;\n  }\n  .guidelines-list {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n  }\n  .guidelines-list li {\n    padding: 10px 0;\n    border-bottom: 1px solid #eee;\n    color: #555;\n    display: flex;\n    align-items: center;\n  }\n  .guidelines-list li:last-child {\n    border-bottom: none;\n  }\n  .icon {\n    margin-right: 12px;\n    font-size: 18px;\n  }\n  .warning {\n    color: #e74c3c;\n    font-weight: bold;\n  }\n&lt;/style&gt;\n\n&lt;div class=&quot;guidelines-container&quot;&gt;\n  &lt;div class=&quot;guidelines-title&quot;&gt;Event Guidelines&lt;/div&gt;\n  &lt;ul class=&quot;guidelines-list&quot;&gt;\n    &lt;li&gt;\n      &lt;span class=&quot;icon&quot;&gt;\u23F0&lt;/span&gt;\n      &lt;span&gt;Arrive &lt;strong&gt;30 minutes early&lt;/strong&gt; for registration and seating.&lt;/span&gt;\n    &lt;/li&gt;\n    &lt;li&gt;\n      &lt;span class=&quot;icon&quot;&gt;\uD83C\uDD94&lt;/span&gt;\n      &lt;span&gt;Bring a &lt;strong&gt;valid ID&lt;/strong&gt; for verification purposes.&lt;/span&gt;\n    &lt;/li&gt;\n    &lt;li&gt;\n      &lt;span class=&quot;icon&quot;&gt;\uD83D\uDEAB&lt;/span&gt;\n      &lt;span class=&quot;warning&quot;&gt;No outside food allowed&lt;/span&gt; inside the event venue.&lt;/span&gt;\n    &lt;/li&gt;\n  &lt;/ul&gt;\n&lt;/div&gt;\n&lt;%\n\n}%&gt;]]>\n</dsp>\n</column><column\n   \t\t width='50%'\n   \t>\n\t<dsp id='Event_Brochure_Viewer_dsp' elementName='Event_Brochure_Viewer'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage Event_Brochure_Viewer_dsp()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div class=&quot;brochure-container&quot;&gt;\n&lt;%\n\t// Define the URL for the event brochure (Replace with actual public URL)\n\tbrochureURL = &quot;https://example.com/event-brochure.pdf&quot;;\n\t// Check if URL is valid\n\tif(brochureURL != null &amp;&amp; brochureURL != &quot;&quot;)\n\t{\n\t\t%&gt;\n&lt;div class=&quot;brochure-header&quot;&gt;\n      &lt;h2&gt;Event Brochure&lt;/h2&gt;\n      &lt;p&gt;View the official event brochure below&lt;/p&gt;\n    &lt;/div&gt;\n    \n    &lt;div class=&quot;brochure-viewer&quot;&gt;\n      &lt;iframe src=&quot;&lt;%=brochureURL%&gt;&quot; width=&quot;100%&quot; height=&quot;600px&quot; style=&quot;border: 1px solid #ddd;&quot;&gt;\n        &lt;p&gt;Your browser does not support PDF viewing. &lt;a href=&quot;&lt;%=brochureURL%&gt;&quot; target=&quot;_blank&quot;&gt;Download the PDF instead&lt;/a&gt;.&lt;/p&gt;\n      &lt;/iframe&gt;\n    &lt;/div&gt;\n    \n    &lt;div class=&quot;brochure-actions&quot;&gt;\n      &lt;a href=&quot;&lt;%=brochureURL%&gt;&quot; target=&quot;_blank&quot; class=&quot;btn btn-primary&quot;&gt;Open in New Tab&lt;/a&gt;\n      &lt;a href=&quot;&lt;%=brochureURL%&gt;&quot; download=&quot;Event_Brochure.pdf&quot; class=&quot;btn btn-secondary&quot;&gt;Download PDF&lt;/a&gt;\n    &lt;/div&gt;\n&lt;%\n\t}\n\telse\n\t{\n\t\t%&gt;\n&lt;div class=&quot;error-message&quot;&gt;\n      &lt;p&gt;Brochure is currently unavailable. Please check back later.&lt;/p&gt;\n    &lt;/div&gt;\n&lt;%\n\t}\n\t%&gt;\n&lt;/div&gt;\n\n&lt;style&gt;\n  .brochure-container {\n    font-family: Arial, sans-serif;\n    max-width: 100%;\n    margin: 0 auto;\n    padding: 20px;\n    background-color: #f9f9f9;\n    border-radius: 8px;\n  }\n  .brochure-header {\n    text-align: center;\n    margin-bottom: 20px;\n  }\n  .brochure-header h2 {\n    color: #333;\n    margin-bottom: 10px;\n  }\n  .brochure-viewer {\n    margin-bottom: 20px;\n    background: #fff;\n    padding: 10px;\n    border-radius: 4px;\n    box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n  }\n  .brochure-actions {\n    text-align: center;\n    margin-top: 20px;\n  }\n  .btn {\n    display: inline-block;\n    padding: 10px 20px;\n    margin: 0 10px;\n    text-decoration: none;\n    border-radius: 4px;\n    font-weight: bold;\n    transition: background-color 0.3s;\n  }\n  .btn-primary {\n    background-color: #007bff;\n    color: white;\n  }\n  .btn-primary:hover {\n    background-color: #0056b3;\n  }\n  .btn-secondary {\n    background-color: #6c757d;\n    color: white;\n  }\n  .btn-secondary:hover {\n    background-color: #545b62;\n  }\n  .error-message {\n    text-align: center;\n    color: #dc3545;\n    padding: 20px;\n    background-color: #f8d7da;\n    border-radius: 4px;\n  }\n&lt;/style&gt;\n&lt;%\n\n}%&gt;]]>\n</dsp>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<button \n\t\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'Event_Registration'\n\t\ttarget = 'new-window'\n\tcolor = '#ffffff'\n\tsize = '16px'\n\ttext ='Send Reminder'\n\t\ttype = 'flat'\n\t\tbgColor = 'theme'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+
+
+		workflow
+		{
+		form
+		{
+			On_Registration_Submit_Workflow as "On_Registration_Submit_Workflow"
+			{
+				type =  form
+				form = Event_Registration
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Fetch the participant's full name from the composite NAME field
+										participantFirstName = input.participant_name.first_name;
+										participantLastName = input.participant_name.last_name;
+										participantPrefix = input.participant_name.prefix;
+										// Construct the full name for the email message
+										if(participantPrefix != null && participantPrefix != "")
+										{
+											fullName = participantPrefix + " " + participantFirstName + " " + participantLastName;
+										}
+										else
+										{
+											fullName = participantFirstName + " " + participantLastName;
+										}
+										// Fetch the selected event track
+										eventTrack = input.event_track;
+										// Fetch the team size
+										teamSize = input.team_size;
+										// Construct the email message
+										emailMessage = "<p>Dear " + fullName + ",</p>";
+										emailMessage = emailMessage + "<p>Thank you for registering for the event!</p>";
+										emailMessage = emailMessage + "<p>We have received your registration details:</p>";
+										emailMessage = emailMessage + "<ul>";
+										emailMessage = emailMessage + "<li><strong>Event Track:</strong> " + eventTrack + "</li>";
+										emailMessage = emailMessage + "<li><strong>Team Size:</strong> " + teamSize.toString() + "</li>";
+										emailMessage = emailMessage + "<li><strong>Areas of Interest:</strong> " + input.areas_of_interest.toString() + "</li>";
+										emailMessage = emailMessage + "</ul>";
+										emailMessage = emailMessage + "<p>We look forward to seeing you at the event.</p>";
+										emailMessage = emailMessage + "<p>Best Regards,<br>Event Registration Team</p>";
+										// Send the confirmation email
+										sendmail
+										[
+											from :zoho.adminuserid
+											to :input.email_address
+											subject :"Registration Confirmation - Event Registration"
+											message :emailMessage
+											content type :HTML
+										]
+						)
+					}
+				}
+
+			}
+			VIP_Sponsorship_Pass_Approval as "VIP_Sponsorship_Pass_Approval"
+			{
+				type =  form
+				form = Event_Registration
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Check if the registration is for a VIP or Sponsor participant
+										if(input.participant_type == "Professional")
+										{
+											// Fetch the Event Coordinator's email (assuming a field or system user)
+											// Using zoho.adminuserid as fallback for coordinator email if not specified
+											coordinatorEmail = zoho.adminuserid;
+											// Prepare the approval message
+											participantName = input.participant_name.first_name + " " + input.participant_name.last_name;
+											collegeName = input.college_organization_name;
+											emailAddr = input.email_address;
+											message = "<p>Dear Event Coordinator,</p>" + "<p>A new VIP/Professional registration requires your approval:</p>" + "<ul>" + "<li><strong>Name:</strong> " + participantName + "</li>" + "<li><strong>Email:</strong> " + emailAddr + "</li>" + "<li><strong>Organization:</strong> " + collegeName + "</li>" + "<li><strong>Track:</strong> " + input.event_track + "</li>" + "</ul>" + "<p>Please review and approve the registration in the Event_Registration form.</p>" + "<p>Best regards,<br>Event Registration System</p>";
+											// Send approval request email
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :coordinatorEmail
+												subject :"Approval Required: VIP/Professional Registration - " + participantName
+												message :message
+												content type :HTML
+											]
+											// Optional: Set a status flag for pending approval if a field exists
+											// input.Record_Status = 1; // Assuming 1 represents 'Pending Approval'
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		icon
+		{
+			text = "ER"
+			background color = "theme"
+			foreground color = "#ffffff"
+		}
+	}
+
+	web
+	{
+		forms
+		{
+			form Colleges
+			{
+				label placement = left
+			}
+			form Event_Registration
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Event_Registrations
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								participant_name as "Participant Name"
+								participant_type as "Participant Type"
+								team_size as "Team Size"
+								email_address as "Email Address"
+								contact_number as "Contact Number"
+								college_organization_name as "College Organization Name"
+								institution_address as "Institution Address"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								participant_name as "Participant Name"
+								participant_type as "Participant Type"
+								team_size as "Team Size"
+								email_address as "Email Address"
+								contact_number as "Contact Number"
+								college_organization_name as "College Organization Name"
+								institution_address as "Institution Address"
+								event_track as "Event Track"
+								areas_of_interest as "Areas Of Interest"
+								expectations_from_event as "Expectations From Event"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Colleges
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								college_name as "College Name"
+								college_code as "College Code"
+								city as "City"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								college_name as "College Name"
+								college_code as "College Code"
+								city as "City"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Registrations_List
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						record
+						(
+							Edit   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						registration_details
+						(
+		     				title = "Registration Details"
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+								Added_Time as "Added Time"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Registration_Status_Kanban
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 2
+						datablock1
+						(
+							layout type = 4
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						record
+						(
+							Edit   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						registration_details
+						(
+		     				title = "Registration Details"
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+								Record_Status as "Record Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Track_By_ParticipantType_Pivot
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						record
+						(
+							Edit   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						registration_details
+						(
+		     				title = "Registration Details"
+							fields
+							(
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Session_Schedule_Calendar
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 2
+						datablock1
+						(
+							layout type = 4
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						record
+						(
+							Edit   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						registration_details
+						(
+		     				title = "Registration Details"
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+								Added_Time as "Added Time"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Track_Popularity_Chart
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								event_track as "Event Track"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						record
+						(
+							Edit   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						registration_details
+						(
+		     				title = "Registration Details"
+							fields
+							(
+								event_track as "Event Track"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Institution_Wise_Summary
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -2
+	     				recordsperrow = 3
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								college_organization_name as "College Organization Name"
+								team_size as "Team Size"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						record
+						(
+							Edit   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						registration_details
+						(
+		     				title = "Registration Details"
+							fields
+							(
+								college_organization_name as "College Organization Name"
+								team_size as "Team Size"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Participant_Institution_Map
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 2
+						datablock1
+						(
+							layout type = 4
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						record
+						(
+							Edit   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						registration_details
+						(
+		     				title = "Registration Details"
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+								institution_address as "Institution Address"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Registration_Activity_Timeline
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 2
+						datablock1
+						(
+							layout type = 4
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						record
+						(
+							Edit   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						registration_details
+						(
+		     				title = "Registration Details"
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+								participant_type as "Participant Type"
+								Added_Time as "Added Time"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Registrations_Spreadsheet
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -3
+						datablock1
+						(
+							layout type = -3
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						record
+						(
+							Edit   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							Edit   	   
+    					)
+						on right click
+						(
+							Edit   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								participant_name as "Participant Name"
+								email_address as "Email Address"
+								event_track as "Event Track"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Event_Registrations
+				{
+					displayname = "Event Registrations"
+					icon = "location-appointment"
+					form  Event_Registration
+					{
+						icon = "location-appointment"
+					}
+					report All_Event_Registrations
+					{
+						icon = "tech-desktop"
+					}
+					page Event_Command_Center_Page
+					{
+						icon = "tech-desktop"
+					}
+					report All_Registrations_List
+					{
+						icon = "tech-desktop"
+					}
+					report Registration_Status_Kanban
+					{
+						icon = "tech-desktop"
+					}
+					report Track_By_ParticipantType_Pivot
+					{
+						icon = "tech-desktop"
+					}
+					report Session_Schedule_Calendar
+					{
+						icon = "tech-desktop"
+					}
+					report Track_Popularity_Chart
+					{
+						icon = "tech-desktop"
+					}
+					report Institution_Wise_Summary
+					{
+						icon = "tech-desktop"
+					}
+					report Participant_Institution_Map
+					{
+						icon = "tech-desktop"
+					}
+					report Registration_Activity_Timeline
+					{
+						icon = "tech-desktop"
+					}
+					report Registrations_Spreadsheet
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Colleges
+				{
+					displayname = "Colleges"
+					icon = "education-school"
+					form  Colleges
+					{
+						icon = "education-school"
+					}
+					report All_Colleges
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			font = "lato"
+			color options
+			{
+				color = "11"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
